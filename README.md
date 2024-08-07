@@ -64,7 +64,7 @@ List the pages of your app with brief descriptions. You can show this visually, 
 
 Provide visuals of your app's screens. You can use tools like Figma or pictures of hand-drawn sketches.
 
-Link to Desktop mockup: https://balsamiq.cloud/stn0n5j/p5nynit/r78C8 (a screenshot is also included in the repo)
+Link to Desktop mockup: https://balsamiq.cloud/stn0n5j/p5nynit/r78C8 (a screenshot is also included in the repo) 
 
 ### Data
 
