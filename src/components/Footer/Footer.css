@@ -1,1 +1,19 @@
-/*# sourceMappingURL=Footer.css.map */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  position: relative;
+  width: 100%;
+  bottom: 0;
+}
+.footer__social a {
+  color: #fff;
+  margin-left: 15px;
+  text-decoration: none;
+}
+.footer__social a:hover {
+  text-decoration: underline;
+}/*# sourceMappingURL=Footer.css.map */
