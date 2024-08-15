@@ -1,0 +1,43 @@
+@use "../../styles/partials/colors";
+@use "../../styles/partials/font";
+@use "../../styles/partials/typography";
+@use "../../styles/partials/mixins";
+
+body {
+  margin: 0;
+  font-family: "Avenir Next";
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+//   position: relative;
+  align-items: center;
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
+
+    &__logo {
+    // font-size: 1.5rem;
+    // font-weight: bold;
+    // text-decoration: none;
+    height: auto;
+  }
+
+
+  &__nav {
+    // background-color: red;
+
+    &List {
+        display: flex;
+        list-style: none;
+        flex-direction: row;
+        gap: 1rem;
+        padding: 10px 20px 10px 20px;
+    }
+}
+  
+}
+
+
+

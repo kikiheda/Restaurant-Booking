@@ -1,0 +1,28 @@
+@mixin mobile {
+    @media screen and (min-width:320px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media screen and (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media screen and (min-width: 1280px) {
+        @content;
+    }
+}
+
+$mobile-margins: 1rem;
+$mobile-heading-top: 1.5rem;
+$mobile-heading-bottom: 1rem;
+$mobile-component-padding: 1rem;
+
+$tablet-margins: 2.25rem;
+$desktop-margins: calc((100% - 1280px)/2);
+$heading-top: 2.25rem;
+$heading-bottom: 1.5rem;
+$component-padding: 1.5rem;
