@@ -1,13 +1,11 @@
+//Helper Functions to select date and time
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
-// import axios from "axios";
-import "react-datepicker/dist/react-datepicker.css";
 import { getYear, getMonth } from "date-fns";
-import "./ReservationForm.scss";
+
 
 // Helper Function to pick date (from datepicker libary)
-const PickDate = () => {
+export const PickDate = () => {
   const [startDate, setStartDate] = useState(new Date());
    const currentYear = getYear(new Date());
    const years = [];
@@ -132,7 +130,7 @@ const PickDate = () => {
 
 
 // Helper Function to pick time (from datepicker libary)
-const PickTime = () => {
+export const PickTime = () => {
     const [startDate, setStartDate] = useState(new Date());
     return (
       <DatePicker
@@ -147,85 +145,3 @@ const PickTime = () => {
     );
 
 }
-
-//Helper Function to select party size
-const PickPartySize = () => {
- const navigate = useNavigate();
-
- const handlePartySizeChange = (event) => {
-   if (event.target.value === "more") {
-     if (
-       window.confirm(
-         "For reservations of more than 6 people, please contact us directly. Would you like to visit our contact page?"
-       )
-     ) {
-       navigate("/contact-us"); // Navigate to the Contact Us page
-     }
-     event.target.value = "0"; // Reset the selection to the default option
-   }
- };
-  return (
-    <select
-      id="party-size"
-      className="reserve-form__select"
-      onChange={handlePartySizeChange}
-    >
-      <option value="0" disabled selected>
-        Select
-      </option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="more">More</option>
-    </select>
-  );
-};
-  
-// Helper Function to find a table
-const FindTable = () => {
-
-
-}
-
-// Main Component 
-const ReservationForm = () => {
-  return (
-    <div className="reserve-form">
-      <form className="reserve-form__datetime">
-        {/* select date field */}
-        <div className="reserve-form__datetime-date">
-          <label htmlFor="date" className="reserve-form__label">
-            Select a Date
-          </label>
-          <PickDate />
-        </div>
-
-        {/* select time field */}
-        <div className="reserve-form__datetime-time">
-          <label htmlFor="time" className="reserve-form__label">
-            Select a Time
-          </label>
-          <PickTime />
-        </div>
-
-        {/* select party size field */}
-        <div className="reserve-form__party-size">
-          <label htmlFor="party-size" className="reserve-form__label">
-            Select Party Size
-          </label>
-          <PickPartySize />
-        </div>
-
-        {/* find a table button */}
-        <button type="submit" className="reserve-form__button">
-          Find a Table
-        </button>
-      </form>
-    </div>
-  );
-};
-
-export default ReservationForm;
