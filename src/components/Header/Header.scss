@@ -5,23 +5,29 @@
 
 body {
   margin: 0;
-  font-family: "Avenir Next";
 }
 
 .header {
   display: flex;
   justify-content: space-between;
-//   position: relative;
+  position: relative;
+  width: 100%;
   align-items: center;
   padding: 20px;
   background-color: #333;
   color: #fff;
 
     &__logo {
-    // font-size: 1.5rem;
-    // font-weight: bold;
-    // text-decoration: none;
-    height: auto;
+     height: auto;
+
+    img {
+      object-fit: cover;
+      background-color: white;
+      padding: 10px 10px 10px 10px;
+      border-radius: 30%;
+      width: 5rem;
+      height: 2rem;
+    }
   }
 
 
@@ -35,9 +41,50 @@ body {
         gap: 1rem;
         padding: 10px 20px 10px 20px;
     }
-}
+
+    &Item {
+      font-family: Arial, Helvetica, sans-serif;
+      margin-right: 20px; 
+      
+
+      a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 15px;
+        display: inline-block;
+
+        &:hover {
+          cursor: pointer;
+          text-decoration: underline;
+        }
+
+        // &:active {
+        //   background-color: rgba($color: white, $alpha: 1.0); 
+        //   color: black; 
+        //   border-radius: 5px; 
+        //   }
+    }
+
   
+    }
+    }
+
+&__user {
+  
+    img {
+        width: 2.25rem;
+        height: 2.25rem;
+        object-fit: cover;
+        border-radius: 50%;
+        // object-position: 25% 25%;
+
+       
+    }
+  }
 }
+
+  
+
 
 
 

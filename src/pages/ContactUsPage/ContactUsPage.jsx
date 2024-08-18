@@ -1,4 +1,5 @@
 import React from "react";
+import ContactUs from "../../components/ContactUs/ContactUs";
 import "./ContactUsPage.scss";
 
 const ContactUsPage = () => {
@@ -9,7 +10,7 @@ const ContactUsPage = () => {
         We'd love to hear from you! Please fill out the form below to get in
         touch.
       </p>
-      {/* Add contact form here */}
+      <ContactUs />
     </div>
   );
 };
