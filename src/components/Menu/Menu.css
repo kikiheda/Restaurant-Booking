@@ -1,1 +1,22 @@
-/*# sourceMappingURL=Menu.css.map */
+.menu-form {
+  position: relative;
+  align-content: center;
+}
+.menu-form__navList {
+  display: flex;
+  list-style: none;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 5rem;
+  padding: 10px 20px 10px 20px;
+}
+.menu-form__navItem a {
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+}
+.menu-form__navItem a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}/*# sourceMappingURL=Menu.css.map */
