@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getYear, getMonth, getHours, setMinutes, setHours } from "date-fns";
+import axios from "axios";
+// import reservationData from "../../data/reservations.json"; // for testing
 import ReservationForm from "../ReservationForm/ReservationForm.jsx";
 import "./MakeReservation.scss";
 
@@ -11,8 +13,15 @@ const MakeReservation = ({ onReservationComplete }) => {
   const [timeSlots, setTimeSlots] = useState([]);
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [isFindingTable, setIsFindingTable] = useState(false);
+  // const [reservations, setReservations] = useState([]);
   const navigate = useNavigate();
 
+  // useEffect(() => {
+  //   // Simulate fetching data from JSON
+  //   setReservations(reservationData.reservations);
+  // }, []);
+
+  // Helper function to validate date format - August only
   const validateDate = (date) => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -29,6 +38,7 @@ const MakeReservation = ({ onReservationComplete }) => {
     }
   };
 
+  // Helper function to handle party size - limit to 6
   const handlePartySizeChange = (event) => {
     if (event.target.value === "more") {
       if (
@@ -44,6 +54,7 @@ const MakeReservation = ({ onReservationComplete }) => {
     }
   };
 
+  // Helper function to generate time slots for display
   const generateTimeSlots = (time) => {
     const slots = [];
     const hour = getHours(time);
@@ -75,6 +86,7 @@ const MakeReservation = ({ onReservationComplete }) => {
     return slots;
   };
 
+  // Helper function to find table
   const handleFindTable = (event) => {
     event.preventDefault();
     setIsFindingTable(true);
@@ -96,23 +108,64 @@ const MakeReservation = ({ onReservationComplete }) => {
     setSelectedSlot(slot);
   };
 
-  const handleReservation = () => {
-    if (selectedSlot) {
-      console.log(
-        "Reservation made for:",
-        selectedSlot,
-        "Party size:",
-        partySize
-      );
-      setStartDate(new Date());
-      setSelectedTime(null);
-      setPartySize(null);
-      setTimeSlots([]);
-      setSelectedSlot(null);
-      alert("Reservation confirmed!");
-      onReservationComplete();
-    }
-  };
+  // Reservation function without backend implementation
+  // const handleReservation = () => {
+  //   if (selectedSlot) {
+  //     console.log(
+  //       "Reservation made for:",
+  //       selectedSlot,
+  //       "Party size:",
+  //       partySize
+  //     );
+  //     setStartDate(new Date());
+  //     setSelectedTime(null);
+  //     setPartySize(null);
+  //     setTimeSlots([]);
+  //     setSelectedSlot(null);
+  //     alert("Reservation confirmed!");
+  //     onReservationComplete();
+  //   }
+  // };
+
+  // Reservation function
+ const handleReservation = async () => {
+   if (selectedSlot) {
+     const reservationData = {
+       user_id: 1, // default for testing
+       name: "Alice Smith",
+       date: startDate.toISOString().split("T")[0],
+       time: selectedSlot.toLocaleTimeString([], {
+         hour: "2-digit",
+         minute: "2-digit",
+        //  second: "2-digit"
+       }),
+       party_size: partySize,
+     };
+
+     try {
+       const response = await axios.post(
+         `${import.meta.env.VITE_API_URL}/reservations`,
+         reservationData
+       );
+
+       if (response.status === 201) {
+         console.log("Reservation successful:", response.data);
+         alert("Reservation confirmed!");
+         setStartDate(new Date());
+         setSelectedTime(null);
+         setPartySize(null);
+         setTimeSlots([]);
+         setSelectedSlot(null);
+         onReservationComplete();
+       }
+     } catch (error) {
+       console.error("Error making reservation", error);
+       alert("There was an issue with your reservation. Please try again.");
+     }
+   }
+ };
+
+
 
   const handleCancel = () => {
     setStartDate(new Date());
