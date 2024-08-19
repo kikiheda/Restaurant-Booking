@@ -1,0 +1,58 @@
+{
+  "dinner_menu": [
+    {
+      "category": "Starter",
+      "item_name": "Soupe à l'oignon",
+      "description": "Traditional French onion soup with melted cheese on top",
+      "price": 9.5
+    },
+    {
+      "category": "Starter",
+      "item_name": "Escargots de Bourgogne",
+      "description": "Burgundy snails cooked in garlic herb butter",
+      "price": 12.0
+    },
+    {
+      "category": "Starter",
+      "item_name": "Salade Niçoise",
+      "description": "Mixed salad with tuna, olives, eggs, and anchovies",
+      "price": 10.5
+    },
+    {
+      "category": "Main",
+      "item_name": "Coq au Vin",
+      "description": "Chicken braised with red wine, mushrooms, and lardons",
+      "price": 32.0
+    },
+    {
+      "category": "Main",
+      "item_name": "Boeuf Bourguignon",
+      "description": "Beef stew slow-cooked with red wine, carrots, and onions",
+      "price": 45.0
+    },
+    {
+      "category": "Main",
+      "item_name": "Ratatouille",
+      "description": "Stewed vegetables including tomatoes, zucchini, and eggplant",
+      "price": 18.0
+    },
+    {
+      "category": "Dessert",
+      "item_name": "Crème Brûlée",
+      "description": "Rich custard topped with a layer of caramelized sugar",
+      "price": 8.5
+    },
+    {
+      "category": "Dessert",
+      "item_name": "Tarte Tatin",
+      "description": "Upside-down caramelized apple tart",
+      "price": 9.0
+    },
+    {
+      "category": "Dessert",
+      "item_name": "Éclair au Chocolat",
+      "description": "Choux pastry filled with chocolate cream",
+      "price": 7.5
+    }
+  ]
+}
