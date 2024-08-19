@@ -10,16 +10,23 @@ import "./App.css";
 
 const App = () => {
   return (
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/menu" element={<MenuPage />} />
-          <Route path="/contact" element={<ContactUsPage />} />
-          <Route path="/reserve" element={<ReservationPage />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/menu" element={<MenuPage />} />
+        <Route path="/contact" element={<ContactUsPage />} />
+        <Route path="/reserve" element={<ReservationPage />} />
+        <Route 
+          path="/reserve/new" 
+          element={<ReservationPage mode="new" />} />
+        <Route
+          path="/reserve/modify"
+          element={<ReservationPage mode="modify" />}
+        />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 };
 

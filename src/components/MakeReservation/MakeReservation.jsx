@@ -6,7 +6,7 @@ import axios from "axios";
 import ReservationForm from "../ReservationForm/ReservationForm.jsx";
 import "./MakeReservation.scss";
 
-const MakeReservation = ({ onReservationComplete }) => {
+const MakeReservation = ({ }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState(null);
   const [partySize, setPartySize] = useState(null);
@@ -130,21 +130,26 @@ const MakeReservation = ({ onReservationComplete }) => {
   // Reservation function
  const handleReservation = async () => {
    if (selectedSlot) {
+    // const reservationId = Math.floor(
+    //   100000 + Math.random() * 900000
+    // ).toString();
+    
      const reservationData = {
-       user_id: 1, // default for testing
-       name: "Alice Smith",
+       user_id: 33, // default for testing
+      //  reservationId: "123456",
+       name: "John White",
        date: startDate.toISOString().split("T")[0],
        time: selectedSlot.toLocaleTimeString([], {
          hour: "2-digit",
          minute: "2-digit",
-        //  second: "2-digit"
+         //  second: "2-digit"
        }),
        party_size: partySize,
      };
 
      try {
        const response = await axios.post(
-         `${import.meta.env.VITE_API_URL}/reservations`,
+         `${import.meta.env.VITE_API_URL}/reservations/create`,
          reservationData
        );
 
@@ -156,7 +161,7 @@ const MakeReservation = ({ onReservationComplete }) => {
          setPartySize(null);
          setTimeSlots([]);
          setSelectedSlot(null);
-         onReservationComplete();
+        //  onReservationComplete();
        }
      } catch (error) {
        console.error("Error making reservation", error);
@@ -174,11 +179,13 @@ const MakeReservation = ({ onReservationComplete }) => {
     setTimeSlots([]);
     setSelectedSlot(null);
     setIsFindingTable(false);
-    onReservationComplete();
+    navigate('/reserve')
+    
   };
 
   return (
     <div className="make-reservation">
+      <h2>Make a New Reservation</h2>
       <ReservationForm
         startDate={startDate}
         setStartDate={setStartDate}

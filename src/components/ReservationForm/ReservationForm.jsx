@@ -29,7 +29,7 @@ const ReservationForm = ({
             <input
               type="text"
               style={{ paddingLeft: "2em" }}
-              value={selectedDate.toLocaleDateString()}
+              value={selectedDate}
               readOnly
             />
             <div
