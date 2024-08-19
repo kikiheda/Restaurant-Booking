@@ -1,3 +1,37 @@
+@use "../../styles/partials/colors";
+@use "../../styles/partials/font";
+@use "../../styles/partials/typography";
+@use "../../styles/partials/mixins";
+@use "../../styles/partials/margins";
+
 .menuPage {
     text-align: center;
+
+    @include mixins.mobile {
+        padding: 3.5rem margins.$mobile-margins margins.$mobile-margins;
+
+        h1 {
+            @include font.mobile-page-header;
+        }
+
+        p {
+            @include font.mobile-body;
+        }
+    }
+
+    @include mixins.tablet {
+        padding-top: 3.2rem margins.$tablet-margins margins.$component-padding;
+
+        h1 {
+            @include font.page-header;
+        }
+
+        p {
+            @include font.body;
+        }
+    }
+
+    @include mixins.desktop {
+        padding-top: 3.2rem margins.$desktop-margins margins.$component-padding
+    }
 }

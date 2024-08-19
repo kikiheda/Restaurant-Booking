@@ -1,21 +1,52 @@
+@use "../../styles/partials/colors";
+@use "../../styles/partials/font";
+@use "../../styles/partials/typography";
+@use "../../styles/partials/mixins";
+@use "../../styles/partials/margins";
+
 .footer {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  align-items: center;
-//   padding: 20px;
-  background-color: #333;
-  color: #fff;
-  position: relative;
-  width: 100%;
-  bottom: 0;
+  text-align: center;
+  background-color: colors.$DarkerBkg;
+  color: colors.$LighterText;
 
-  &__social a {
-    color: #fff;
-    margin-left: 15px;
-    text-decoration: none;
+  margin-top: auto;
 
-    &:hover {
+
+  @include mixins.mobile {
+    padding: margins.$mobile-margins;
+    @include font.mobile-body;
+  }
+
+  @include mixins.tablet {
+    padding: margins.$tablet-margins;
+  }
+
+  &__info p {
+    @include mixins.mobile {
+      margin: 0;
+      padding-bottom: margins.$mobile-component-padding;
+      @include font.mobile-footer-text;
+    }
+
+    @include mixins.tablet {
+      @include font.footer-text;
+    }
+  }
+
+  &__social {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    a {
+      color: colors.$LighterText;
+      text-decoration: none;
+    }
+
+    a:hover {
       text-decoration: underline;
     }
   }

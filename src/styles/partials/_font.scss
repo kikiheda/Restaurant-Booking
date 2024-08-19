@@ -11,13 +11,19 @@
 }
 
 @mixin mobile-subheader {
-    font-size: 0.81rem; //13px
+    font-size: 1.25rem; //13px
     line-height: 1.13rem; //18px
     font-weight: 700;
 }
 
 @mixin mobile-body {
-    font-size: 0.81rem; //13px
+    font-size: 0.9rem; //13px
+    line-height: 1.13rem; //18px
+    font-weight: 400;
+}
+
+@mixin mobile-footer-text {
+    font-size: 0.7rem; //13px
     line-height: 1.13rem; //18px
     font-weight: 400;
 }
@@ -31,26 +37,31 @@
 // ----------- Tablet & Desktop Fonts ----------
 
 @mixin page-header {
-    font-size: 2.06rem; //33
-    line-height: 2.75rem; //44px
+    font-size: 2.5rem;
+    line-height: 2.75rem;
     font-weight: 700;
 }
 
 @mixin section-header {
-    font-size: 0.75rem; //12px
-    line-height: 1.25rem; //20px
+    font-size: 2.25rem;
+    line-height: 1.25rem;
     font-weight: 700;
 }
 
 @mixin subheader {
-    font-size: 0.88rem; //14px
-    line-height: 1.38rem; //22px
+    font-size: 2rem;
+    line-height: 1.38rem;
     font-weight: 700;
 }
 
 @mixin body {
-    font-size: 0.88rem; //14px
-    line-height: 1.38rem; //22px
+    font-size: 1.2rem;
+    line-height: 1.38rem;
+    font-weight: 400;
+}
+
+@mixin footer-text {
+    font-size: 0.88rem;
     font-weight: 400;
 }
 

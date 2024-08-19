@@ -1,45 +1,19 @@
-.menu-form {
-    // background-color: red;
-    position: relative;
-    align-content: center;
+@use "../../styles/partials/colors";
+@use "../../styles/partials/font";
+@use "../../styles/partials/typography";
+@use "../../styles/partials/mixins";
+@use "../../styles/partials/margins";
 
-   &__nav {
-    // background-color: red;
-    
-    
+.menu {
 
-    &List {
-        display: flex;
-        list-style: none;
-        flex-direction: row;
-        justify-content: space-between;
-        gap: 1rem;
-        margin: 5rem;
-        padding: 10px 20px 10px 20px;
-
+  h2 {
+    @include mixins.mobile {
+      @include font.mobile-subheader;
     }
 
-    &Item {
-      
-    //   margin-right: 20px; 
-
-      a {
-        color: white;
-        text-decoration: none;
-        // padding: 10px 15px;
-        display: inline-block;
-
-        &:hover {
-          cursor: pointer;
-          text-decoration: underline;
-        }
-
-        // &:active {
-        //   background-color: rgba($color: white, $alpha: 1.0); 
-        //   color: black; 
-        //   border-radius: 5px; 
-        //   }
-        }
+    @include mixins.tablet {
+      @include font.subheader;
     }
   }
+
 }

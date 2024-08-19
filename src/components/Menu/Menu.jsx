@@ -1,7 +1,7 @@
 import React from "react";
 import menuData from "../../data/menu.json";
 import "./Menu.scss";
- 
+
 
 const Menu = () => {
   const renderMenuItems = (category) => {
