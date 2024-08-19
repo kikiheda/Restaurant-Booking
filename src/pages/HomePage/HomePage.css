@@ -32,14 +32,19 @@
 .homePage .hero__textbox__button {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #ff6347;
-  color: white;
   text-decoration: none;
   border-radius: 5px;
   font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 .homePage .hero__textbox__button:hover {
-  background-color: #ff4500;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+.homePage .hero__textbox__button.active {
+  background-color: white;
+  color: blue;
 }
 .homePage .review {
   padding: 40px 20px;

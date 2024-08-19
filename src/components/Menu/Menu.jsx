@@ -1,18 +1,53 @@
-import "./Menu.scss"
+// import React, { useEffect, useState } from "react";
+// import axios from "axios";
+// import "./Menu.scss";
 
-const Menu = () => {
-    return (
-      <div className="menu-form">
-        <nav className="menu-form__nav">
-          <ul className="menu-form__navList">
-            <li className="menu-form__navItem">Breakfast</li>
-            <li className="menu-form__navItem">Lunch</li>
-            <li className="menu-form__navItem">Dinner</li>
-            <li className="menu-form__navItem">Wine</li>
-          </ul>
-        </nav>
-      </div>
-    );
-}
+// const Menu = () => {
+//   const [menu, setMenu] = useState([]);
 
-export default Menu;
+//   useEffect(() => {
+//     axios
+//       .get("/api/menu")
+//       .then((response) => {
+//         setMenu(response.data);
+//       })
+//       .catch((error) => {
+//         console.error("Error fetching menu:", error);
+//       });
+//   }, []);
+
+//   const renderMenuItems = (category) => {
+//     return menu
+//       .filter((item) => item.category === category)
+//       .map((item) => (
+//         <div key={item.id} className="menu-__item">
+//           <h3 className="menu__item-name">{item.item_name}</h3>
+//           <p className="menu__item-description">{item.description}</p>
+//           <p className="menu__item-price">${item.price.toFixed(2)}</p>
+//         </div>
+//       ));
+//   };
+
+//   return (
+//     <div className="menu">
+//       <h1 className="menu__title">Dinner Menu</h1>
+
+//       <section className="menu__section">
+//         <h2 className="menu__section-title">Starters</h2>
+//         {renderMenuItems("starter")}
+//       </section>
+
+//       <section className="menu__section">
+//         <h2 className="menu__section-title">Mains</h2>
+//         {renderMenuItems("main")}
+//       </section>
+
+//       <section className="menu__section">
+//         <h2 className="menu__section-title">Desserts</h2>
+//         {renderMenuItems("dessert")}
+//       </section>
+//     </div>
+//   );
+// };
+
+// export default Menu;

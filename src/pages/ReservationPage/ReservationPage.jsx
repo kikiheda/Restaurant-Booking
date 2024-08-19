@@ -1,15 +1,58 @@
-import React from "react";
-import ReservationForm from "../../components/ReservationForm/ReservationForm";
-import "./ReservationPage.scss";
+import React, { useState } from "react";
+import MakeReservation from "../../components/MakeReservation/MakeReservation";
+import ModifyReservation from "../../components/ModifyReservation/ModifyReservation";
+// import "./ReservationPage.scss";
+
 
 const ReservationPage = () => {
+  const [view, setView] = useState("default");
+
+  const handleNewReservation = () => {
+    setView("make");
+  };
+
+  const handleModifyReservation = () => {
+    setView("modify");
+  };
+
+  const handleBackToDefault = () => {
+    setView("default");
+  };
+
   return (
-    <div className="ReservationPage">
-      <h1>Reserve a Table</h1>
-      <p>Book a table at our restaurant using the form below.</p>
-      {/* Add reservation form here */}
-      <span><p>Reservation Policies</p></span>
-      <ReservationForm />
+    <div className="reservation-page">
+      <h1>Reservations</h1>
+      <span>
+        <p>Intro</p>
+      </span>
+      <span>
+        <h2>Poliies</h2>
+        <p>Placeholder</p>
+      </span>
+      {view === "default" && (
+        <div className="reservation-page__options">
+          <button
+            className="reservation-page__button reservation-page__button--make"
+            onClick={handleNewReservation}
+          >
+            Make New Reservation
+          </button>
+          <button
+            className="reservation-page__button reservation-page__button--modify"
+            onClick={handleModifyReservation}
+          >
+            Modify Existing Reservation
+          </button>
+        </div>
+      )}
+
+      {view === "make" && (
+        <MakeReservation onReservationComplete={handleBackToDefault} />
+      )}
+
+      {view === "modify" && (
+        <ModifyReservation onReservationComplete={handleBackToDefault} />
+      )}
     </div>
   );
 };
