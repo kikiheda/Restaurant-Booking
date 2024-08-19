@@ -1,152 +1,110 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
+import axios from "axios";
 import "react-datepicker/dist/react-datepicker.css";
+import { useParams, useNavigate } from 'react-router-dom';
 import { getMonth } from "date-fns";
-import MakeReservation from "../MakeReservation/MakeReservation.jsx"; 
+import MakeReservation from "../MakeReservation/MakeReservation.jsx";
+const VITE_API_URL = import.meta.env.VITE_API_URL;
+
 import "./ModifyReservation.scss";
 
-
-const ModifyReservation = ({ onReservationComplete }) => {
+const ModifyReservation = () => {
+  // const { id } = useParams();
   const [reservationId, setReservationId] = useState("");
-  const [email, setEmail] = useState("");
-  const [reservation, setReservation] = useState(null);
-  const [isModifying, setIsModifying] = useState(false);
+  const [results, setResults] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState({});
+  const navigate = useNavigate();
 
-  const mockReservationData = {
-    id: "12345",
-    email: "user@example.com",
-    date: new Date("2024-08-19T19:00:00Z"),
-    time: "20:00",
-    partySize: 4,
-  };
-
-  const handleSearch = () => {
-    if (
-      reservationId === mockReservationData.id ||
-      email === mockReservationData.email
-    ) {
-      setReservation(mockReservationData);
-    } else {
-      alert(
-        "Reservation not found. Please check your ID or email and try again."
+  // Find the reservation
+  const handleSearch = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await axios.get(
+        `${VITE_API_URL}/reservations/${reservationId}`
       );
+      console.log("API Response:", response.data);
+      setResults(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching reservation:", error);
+      setError("Reservation not found. Please check the ID and try again.");
+      setLoading(false);
     }
   };
 
-  const handleModifyClick = () => {
-    setIsModifying(true);
+  // Cancel the operation
+  const handleCancel = async() => {
+    navigate("/reserve")
   };
 
-  const handleCancelReservation = () => {
-    console.log("Reservation cancelled:", reservation.id);
-    alert("Reservation cancelled successfully!");
-    setReservation(null);
-  };
+  // Update the reservation
+  const UpdateReservation = () => {
+     const { id } = useParams(); // Get the reservation ID from the URL
+      const navigate = useNavigate();
+     
+      
 
-  const handleBackClick = () => {
-    setIsModifying(false);
-  };
-
+    }
+  // Structure
   return (
     <div className="modify-reservation">
-      {!isModifying ? (
-        !reservation ? (
-          <div className="modify-reservation__search">
-            <h2 className="modify-reservation__title">
-              Modify Existing Reservation
-            </h2>
-            <div className="modify-reservation__form-group">
-              <label
-                htmlFor="reservationId"
-                className="modify-reservation__label"
-              >
-                Reservation ID:
-              </label>
-              <input
-                type="text"
-                id="reservationId"
-                value={reservationId}
-                onChange={(e) => setReservationId(e.target.value)}
-                className="modify-reservation__input"
-              />
-            </div>
-            <div className="modify-reservation__form-group">
-              <label htmlFor="email" className="modify-reservation__label">
-                Email:
-              </label>
-              <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="modify-reservation__input"
-              />
-            </div>
-            <button
-              onClick={handleSearch}
-              className="modify-reservation__button"
-            >
-              Search Reservation
-            </button>
-            <button
-              onClick={onReservationComplete}
-              className="modify-reservation__button modify-reservation__button--cancel"
-            >
-              Cancel
-            </button>
-          </div>
-        ) : (
-          <div className="modify-reservation__details">
-            <h2 className="modify-reservation__title">
-              Modify Your Reservation
-            </h2>
-            <div className="modify-reservation__info">
-              <p>
-                <strong>Current Date:</strong>{" "}
-                {reservation.date.toLocaleDateString()}
-              </p>
-              <p>
-                <strong>Current Time:</strong> {reservation.time}
-              </p>
-              <p>
-                <strong>Current Party Size:</strong> {reservation.partySize}
-              </p>
-            </div>
-            <div className="modify-reservation__actions">
-              <button
-                onClick={handleModifyClick}
-                className="modify-reservation__button"
-              >
-                Modify Reservation
-              </button>
-              <button
-                onClick={handleCancelReservation}
-                className="modify-reservation__button modify-reservation__button--cancel"
-              >
-                Cancel Reservation
-              </button>
-              <button
-                onClick={onReservationComplete}
-                className="modify-reservation__button modify-reservation__button--cancel"
-              >
-                Back
-              </button>
-            </div>
-          </div>
-        )
-      ) : (
-        <div>
-          <MakeReservation reservation={reservation} />
-          <button
-            onClick={handleBackClick}
-            className="modify-reservation__button modify-reservation__button--cancel"
-          >
-            Back
-          </button>
+      <h2 className="modify-reservation__title">Modify a Reservation</h2>
+      <div className="modify-reservation__search">
+        {/* Search for a reservation */}
+        <div className="modify-reservation__search-form">
+          <label className="modify-reservation__label" id="reservation-ID">
+            Reservation ID:
+          </label>
+          <input
+            type="text"
+            id="reservationId"
+            value={reservationId}
+            onChange={(e) => setReservationId(e.target.value)}
+            className="modify-reservation__input"
+          />
+        </div>
+        <button
+          onClick={handleSearch}
+          className="modify-reservation__button-search"
+          disabled={loading}
+        >
+          {loading ? "Searching..." : "Search Reservation"}
+        </button>
+        <button 
+          className="modify-reservation__button-cancel"
+          onClick={handleCancel}>
+          Cancel
+        </button>
+      </div>
+
+      {/* {error && <p className="modify-reservation__error">{error}</p>} */}
+
+      {results && results.length > 0 && (
+        <div className="modify-reservation__results">
+          <h3>Reservation Details:</h3>
+          {/* <p><strong>Reservation ID:</strong> {results.id}</p> */}
+          <p>
+            <strong>Name:</strong> {results[0].name}
+          </p>
+
+          <p>
+            <strong>Date:</strong>{" "}
+            {new Date(results[0].date).toLocaleDateString()}
+          </p>
+
+          <p>
+            <strong>Time:</strong> {results[0].time}
+          </p>
+          <p>
+            <strong>Party Size:</strong> {results[0].party_size}
+          </p>
+          {/* Add more fields as necessary */}
         </div>
       )}
     </div>
   );
 };
-
 export default ModifyReservation;
