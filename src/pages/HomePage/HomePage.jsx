@@ -7,11 +7,11 @@ const HomePage = () => {
     <div className="homePage">
       <div className="hero">
         {/* Hero Image */}
-        <img
+        {/* <img
           src="path_to_your_image.jpg"
           alt="Delicious Restaurant"
           className="hero__image"
-        />
+        /> */}
 
         {/* Textbox over the Image */}
         <div className="hero__textbox">
@@ -20,16 +20,19 @@ const HomePage = () => {
             Experience the finest French cuisine at our restaurant. Whether it's
             breakfast, lunch, or dinner, we promise to delight your taste buds.
           </p>
-          <Link to="/menu" className="hero__button">
-            View Our Menu
-          </Link>
+          <button className="hero__button">
+            <Link to="/menu" >
+              View Our Menu
+            </Link>
+          </button>
+
         </div>
       </div>
 
       <div className="review">
         <h2>What Our Customers Say</h2>
         <div className="review__list">
-          
+
           <div className="review__item">
             <p>
               "Amazing experience! The food was exceptional, and the service was
@@ -37,7 +40,7 @@ const HomePage = () => {
             </p>
             <span>- John Doe</span>
           </div>
-          
+
           <div className="review__item">
             <p>
               "The best French restaurant I've ever been to. A must-visit if
@@ -45,7 +48,7 @@ const HomePage = () => {
             </p>
             <span>- Jane Smith</span>
           </div>
-          
+
         </div>
       </div>
     </div>

@@ -1,14 +1,42 @@
+@use "../../styles/partials/colors";
+@use "../../styles/partials/font";
+@use "../../styles/partials/typography";
+@use "../../styles/partials/mixins";
+@use "../../styles/partials/margins";
+
 .homePage {
+  min-height: 84vh;
+
+  @include mixins.mobile {
+    padding-top: 3.5rem;
+  }
+
+  @include mixins.tablet {
+    padding-top: 3.2rem;
+  }
+
+
+
+
   .hero {
     position: relative;
     width: 100%;
-    height: 500px;
     overflow: hidden;
+    background-image: url("../../assets/image/hero-bkg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
-    &__image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    @include mixins.mobile {
+      height: 25rem;
+    }
+
+    @include mixins.tablet {
+      height: 50vh;
+    }
+
+    @include mixins.desktop {
+      height: 60vh;
     }
 
     &__textbox {
@@ -18,52 +46,96 @@
       transform: translate(-50%, -50%);
       color: white;
       text-align: center;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(175, 134, 116, 0.5);
       padding: 20px;
       border-radius: 8px;
 
+      @include mixins.mobile {
+        width: 60%;
+      }
+
       h1 {
-        font-size: 2.5rem;
-        margin-bottom: 10px;
+
+        @include mixins.mobile {
+          @include font.mobile-page-header;
+        }
+
+        @include mixins.tablet {
+          @include font.page-header;
+          margin-bottom: 10px;
+        }
+
       }
 
       p {
-        font-size: 1.2rem;
-        margin-bottom: 20px;
+
+        @include mixins.mobile {
+          @include font.mobile-body;
+        }
+
+        @include mixins.tablet {
+          @include font.body;
+          margin-bottom: 20px;
+        }
+
+      }
+    }
+
+    &__button {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      background-color: colors.$Background;
+      border: none;
+
+      a {
+        text-decoration: none;
+        color: colors.$BrightText;
       }
 
-      &__button {
-        display: inline-block;
-        padding: 10px 20px;
-        // background-color: #ff6347;
-        // color: red;
-        text-decoration: none;
-        border-radius: 5px;
-        font-weight: bold;
-        transition: background-color 0.3s ease;
 
-        &:hover {
-          background-color: white; 
-          color: black;
-          cursor: pointer;
-        }
+      &:hover {
+        background-color: colors.$DarkerBkg;
+        cursor: pointer;
+      }
 
-        &.active {
-          background-color: white; 
-          color: blue;
-        }
+      &.active {
+        background-color: colors.$DarkerBkg;
       }
     }
   }
 
   .review {
-    padding: 40px 20px;
-    background-color: #f8f8f8;
+
+    background-color: colors.$Background;
     text-align: center;
 
+    @include mixins.mobile {
+      padding: margins.$mobile-heading-top margins.$mobile-margins;
+    }
+
+    @include mixins.tablet {
+      padding: margins.$heading-top margins.$tablet-margins;
+    }
+
+    @include mixins.desktop {
+      padding: margins.$heading-top margins.$desktop-margins;
+    }
+
+
     h2 {
-      margin-bottom: 20px;
-      font-size: 2rem;
+      color: colors.$BrightText;
+      margin: 0;
+
+      @include mixins.mobile {
+        @include font.mobile-subheader;
+        margin-bottom: margins.$mobile-heading-bottom;
+      }
+
+      @include mixins.tablet {
+        @include font.subheader;
+      }
     }
 
     &__list {
@@ -76,18 +148,35 @@
     &__item {
       max-width: 600px;
       padding: 20px;
-      background-color: white;
+      background-color: colors.$LighterText;
       border-radius: 8px;
       box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 
       p {
-        font-size: 1.1rem;
         margin-bottom: 10px;
+        color: colors.$PrimaryColor;
+
+        @include mixins.mobile {
+          @include font.mobile-body;
+        }
+
+        @include mixins.tablet {
+          @include font.body;
+        }
       }
 
       span {
-        font-weight: bold;
-        color: #555;
+        color: colors.$PrimaryColor;
+
+        @include mixins.mobile {
+          @include font.mobile-body;
+          font-weight: 700;
+        }
+
+        @include mixins.tablet {
+          @include font.body;
+          font-weight: 700;
+        }
       }
     }
   }
