@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer__info">
         <p>
-          <strong>Opening Hours:</strong> Mon-Sun: 8:00 AM - 11:00 PM
+          <strong>Opening Hours:</strong> Mon-Sun: 5:00 PM - 10:00 PM
         </p>
         <p>
           <strong>Address:</strong> 123 French Street, Toronto, Ontario
