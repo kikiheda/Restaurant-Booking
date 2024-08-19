@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import "./ContactUs.scss";
+import { useNavigate } from "react-router-dom";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 const APIKEY = import.meta.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+import "./ContactUs.scss";
 
 const mapContainerStyle = {
   width: "100%",
@@ -19,6 +20,7 @@ const ContactUs = () => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleSend = () => {
     alert("Your message has been sent!");
@@ -26,7 +28,7 @@ const ContactUs = () => {
   };
 
   const handleCancel = () => {
-    resetForm();
+    navigate("/");
   };
 
   const resetForm = () => {
