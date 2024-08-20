@@ -17,13 +17,8 @@ const App = () => {
         <Route path="/menu" element={<MenuPage />} />
         <Route path="/contact" element={<ContactUsPage />} />
         <Route path="/reserve" element={<ReservationPage />} />
-        <Route 
-          path="/reserve/new" 
-          element={<ReservationPage mode="new" />} />
-        <Route
-          path="/reserve/modify"
-          element={<ReservationPage mode="modify" />}
-        />
+        <Route path="/new" element={<ReservationPage mode="new" />} />
+        <Route path="/modify" element={<ReservationPage mode="modify" />} />
       </Routes>
       <Footer />
     </BrowserRouter>
