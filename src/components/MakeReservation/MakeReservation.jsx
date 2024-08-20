@@ -219,6 +219,8 @@ const MakeReservation = ({
               <button
                 key={index}
                 className={`make-reservation__slot ${
+                  selectedSlot === slot ? "selected" : ""
+                } ${
                   slot.getMinutes() % 15 === 0 ? "available" : "unavailable"
                 }`}
                 onClick={() => handleSlotSelection(slot)}

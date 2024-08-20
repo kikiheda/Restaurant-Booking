@@ -34,24 +34,44 @@ const ReservationPage = ({ mode }) => {
 
   return (
     <div className="reservation-page">
-      <h1>Reservations</h1>
-      <span>
-        <p>Intro</p>
-      </span>
-      <span>
-        <h2>Policies</h2>
-        <p>Placeholder</p>
-      </span>
+      <div className="reservation-page__intro">
+        <h1 className="reservation-page__title">Reservations</h1>
+        <span>
+          <p className="reservation-page__intro-text">
+            Welcome to our reservation page! We’re delighted to help you plan
+            your dining experience. Please select your preferred date and time,
+            and we'll ensure everything is ready for your visit.
+          </p>
+        </span>
+        <span>
+          <div className="reservation-page__policy">
+            <h2 className="reservation-page__policy-title">Policies</h2>
+            <ul className="reservation-page__rules-list">
+              <li className="reservation-page__rule-item">
+                We only accept reservations for the month of August.
+              </li>
+              <li className="reservation-page__rule-item">
+                For groups larger than 6, please contact us directly to make
+                arrangements.
+              </li>
+              <li className="reservation-page__rule-item">
+                Cancellations or modifications must be made at least 24 hours in
+                advance.
+              </li>
+            </ul>
+          </div>
+        </span>
+      </div>
       {view === "default" && (
         <div className="reservation-page__options">
           <button
-            className="reservation-page__button reservation-page__button--make"
+            className="reservation-page__button"
             onClick={handleNewReservation}
           >
             Make New Reservation
           </button>
           <button
-            className="reservation-page__button reservation-page__button--modify"
+            className="reservation-page__button"
             onClick={handleModifyReservation}
           >
             Modify Existing Reservation
