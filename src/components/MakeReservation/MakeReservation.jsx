@@ -44,7 +44,7 @@ const MakeReservation = ({
 
   // Helper function to handle party size - limit to 6
   const handlePartySizeChange = (event) => {
-    if (event.target.value === "more") {
+    if (event.target.value === "More") {
       if (
         window.confirm(
           "For reservations of more than 6 people, please contact us directly. Would you like to visit our contact page?"
@@ -53,6 +53,8 @@ const MakeReservation = ({
         navigate("/contact");
       }
       event.target.value = "0";
+      // Reset the party size value after the popup
+      setPartySize(null);
     } else {
       setPartySize(event.target.value);
     }
