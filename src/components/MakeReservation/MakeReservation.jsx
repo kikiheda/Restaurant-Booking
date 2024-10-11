@@ -25,7 +25,7 @@ const MakeReservation = ({
   //   setReservations(reservationData.reservations);
   // }, []);
 
-  // Helper function to validate date format - August only
+  // Helper function to validate date format - current month only
   const validateDate = (date) => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -34,8 +34,8 @@ const MakeReservation = ({
     if (date < today) {
       alert("You cannot select a date before today.");
       return new Date();
-    } else if (month !== 7) {
-      alert("Reservations can only be made for August.");
+    } else if (month !== 9) {
+      alert("Reservations can only be made for current month.");
       return new Date();
     } else {
       return date;
@@ -100,7 +100,7 @@ const MakeReservation = ({
       !startDate ||
       !selectedTime ||
       !partySize ||
-      getMonth(startDate) !== 7
+      getMonth(startDate) !== 9
     ) {
       alert("Please fill out all fields correctly.");
       return;

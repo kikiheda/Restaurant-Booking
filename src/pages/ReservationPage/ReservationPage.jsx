@@ -48,7 +48,7 @@ const ReservationPage = ({ mode }) => {
             <h2 className="reservation-page__policy-title">Policies</h2>
             <ul className="reservation-page__rules-list">
               <li className="reservation-page__rule-item">
-                We only accept reservations for the month of August.
+                We only accept reservations for the current month.
               </li>
               <li className="reservation-page__rule-item">
                 For groups larger than 6, please contact us directly to make
